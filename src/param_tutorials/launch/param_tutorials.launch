@@ -1,0 +1,16 @@
+<launch>
+    <!-- param:只能定义单个参数 -->
+    <param name = "param1" value ="1"/>
+    <param name = "param2" value ="2"/>
+    <!-- rosparam:通过文件加载参数 -->
+    <rosparam file = "$(find param_tutorials)/params/param.yaml" command = "load"/>
+    <!-- rosparam:批量定义参数 -->
+    <rosparam>
+        param3: 3
+        param4: 4
+    </rosparam>
+    <!-- 定义内部参数，仅限本launch文件访问，rosparam命令行无法访问 -->
+    <node pkg="param_tutorials" type = "main" name="param_demo" output="screen">
+      <param name = "param5" value="5"/>
+    </node>
+</launch>
